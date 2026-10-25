@@ -6,6 +6,8 @@ import assert from 'node:assert/strict';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const manifest = JSON.parse(readFileSync(resolve(root, '.codex-plugin/plugin.json'), 'utf8'));
 const skill = readFileSync(resolve(root, 'skills/bilingual-interface-gate/SKILL.md'), 'utf8');
+const mathSkill = readFileSync(resolve(root, 'skills/mml-math-companion/SKILL.md'), 'utf8');
+const mathMap = readFileSync(resolve(root, 'skills/mml-math-companion/references/source-map.md'), 'utf8');
 
 const checks = [
   () => assert.equal(manifest.name, 'interface-quality-pilot'),
@@ -19,7 +21,19 @@ const checks = [
   () => assert.match(skill, /403\/NO_ACCESS/),
   () => assert.match(skill, /never auto-follow `main`/),
   () => assert.match(skill, /copies \*\*no third-party skill body/),
-  () => assert.match(skill, /feature\/i18n-zh-en-20261025/)
+  () => assert.match(skill, /feature\/i18n-zh-en-20261025/),
+  () => assert.equal(manifest.version, '0.2.0'),
+  () => assert.match(manifest.description, /Mathematics for Machine Learning/),
+  () => assert.match(skill, /mml-math-companion/),
+  () => assert.match(mathSkill, /^---\nname: mml-math-companion\ndescription: [^\n]+\n---\n/),
+  () => ['zh-CN', 'en', 'both', 'SOURCE_PINNED_ONLY'].forEach(s => assert.ok(mathSkill.includes(s))),
+  () => ['BLOCKED_PENDING_RIGHTS', 'NOT_VERIFIED', 'HOLD', 'NOT_EXECUTED'].forEach(s => assert.ok(mathSkill.includes(s))),
+  () => assert.match(mathSkill, /does not show a LICENSE file/),
+  () => assert.match(mathMap, /01fe947328b2ffcf9a7b7b1f2be65a3c355d22cd/),
+  () => assert.match(mathMap, /0 commits ahead, 0 behind/),
+  () => [2, 4, 6, 9, 10, 11, 12].forEach(n => assert.match(mathMap, new RegExp(`\\| ${n} \\|`))),
+  () => ['tutorial_linear_regression.ipynb', 'tutorial_pca.ipynb', 'tutorial_gmm.ipynb'].forEach(n => assert.ok(mathMap.includes(n))),
+  () => assert.match(mathMap, /no PDF, notebook, book text, illustration, or source code is redistributed/)
 ];
 
 let passed = 0;
