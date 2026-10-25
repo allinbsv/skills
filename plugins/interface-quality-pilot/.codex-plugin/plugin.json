@@ -1,7 +1,7 @@
 {
   "name": "interface-quality-pilot",
-  "version": "0.1.0",
-  "description": "Read-only bilingual Chinese/English interface-quality review and change gate for static and component-based web apps.",
+  "version": "0.2.0",
+  "description": "Read-only Chinese/English interface-quality review plus an optional source-linked Mathematics for Machine Learning learning companion.",
   "author": {
     "name": "allinbsv"
   },
@@ -12,19 +12,19 @@
     "accessibility",
     "i18n",
     "bilingual",
-    "ui-quality"
+    "ui-quality",
+    "math-learning",
+    "source-traceability"
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Bilingual Interface Quality Pilot",
-    "shortDescription": "Review Chinese/English web interfaces with a five-part evidence gate",
+    "displayName": "Bilingual Interface & Math Companion",
+    "shortDescription": "Review bilingual interfaces and learn mathematics from traceable links",
     "developerName": "allinbsv",
     "category": "Developer Tools",
-    "capabilities": [
-      "Read"
-    ],
+    "capabilities": ["Read"],
     "defaultPrompt": [
-      "Review my feature branch's Chinese and English interface in read-only mode; report the five gate outcomes and remaining evidence gaps."
+      "In read-only mode, review a Chinese/English interface with five evidence gates or explain one Mathematics for Machine Learning topic using an attributed source link."
     ]
   }
 }
