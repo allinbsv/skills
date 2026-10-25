@@ -51,6 +51,10 @@ Output a compact contract:
 
 When explicitly requested to review `allinbsv/every-joule-lesson1`, target `feature/i18n-zh-en-20261025` and independently re-read its current SHA. Check that the bilingual **guide** switches to Chinese and English, labels stay readable at 320px and 200% zoom, focus reaches the switcher, and `main` has not received the feature commit. Inspect the actual page before claiming visual/interaction `PASS`. The original interactive 3D lesson may use compiled assets; state whether those assets were localized separately.
 
+## Optional mathematics-content handoff
+
+When the *user-requested* interface contains mathematical concepts, equations, or tutorials, the sibling `mml-math-companion` skill may provide a **separate** factual-content check: topic-to-source mapping, notation clarity, and self-authored bilingual explanations. Do not invoke it for ordinary UI reviews. Report math-content results separately from `T1`–`T5`; a mathematics explanation never substitutes for rendered accessibility or localization evidence. Do not download, bundle, republish, or automatically execute the referenced textbook/PDF/notebooks. If the sibling skill is not available, record `MATH_HANDOFF=NOT_RUN`.
+
 ## Provenance and maintenance
 
 Conceptual review tracks are adapted from public descriptions in `jakubkrehel/skills` at commit `592aedc44d7d5b3e29740984252902f3e5402a1c` (MIT, copyright 2026 Jakub Krehel):
